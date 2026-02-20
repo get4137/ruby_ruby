@@ -1,6 +1,9 @@
 # frozen_string_literal: true
-
-# Example 1: Adding instance method dynamically
+#
+# Topic: `class_eval`
+# Purpose: Add or override methods/constants dynamically inside a class.
+#
+# Example 1: Add an instance method with a block
 class User
 end
 
@@ -10,28 +13,27 @@ User.class_eval do
   end
 end
 
-u = User.new
-puts "Dynamic method: #{u.greet}"
+puts "Example 1: #{User.new.greet}"
 
-# Example 2: Adding method with string (evaluated as Ruby code)
+# Example 2: Add methods using a string
 class Product
 end
 
 Product.class_eval <<~RUBY
-  def price_with_tax
-    @price * 1.2
-  end
-
   def price=(value)
     @price = value
   end
+
+  def price_with_tax
+    (@price || 0) * 1.2
+  end
 RUBY
 
-p = Product.new
-p.price = 100
-puts "Price with tax: #{p.price_with_tax}"
+product = Product.new
+product.price = 100
+puts "Example 2: #{product.price_with_tax}"
 
-# Example 3: Adding class method via class_eval
+# Example 3: Add a class method
 class Order
 end
 
@@ -41,9 +43,9 @@ Order.class_eval do
   end
 end
 
-puts "Class method: #{Order.description}"
+puts "Example 3: #{Order.description}"
 
-# Example 4: Accessing private methods inside class_eval
+# Example 4: Access private methods inside class_eval
 class Account
   def initialize(balance)
     @balance = balance
@@ -62,57 +64,47 @@ Account.class_eval do
   end
 end
 
-a = Account.new(1000)
-puts "Reveal secret: #{a.reveal_secret}"
+puts "Example 4: #{Account.new(1000).reveal_secret}"
 
-# Example 5: Using class_eval with define_method
+# Example 5: Define multiple methods with `define_method`
 class Article
 end
 
-[:title, :author].each do |attr|
+%i[title author].each do |attr|
   Article.class_eval do
-    define_method(attr) do
-      instance_variable_get("@#{attr}")
-    end
-
-    define_method("#{attr}=") do |value|
-      instance_variable_set("@#{attr}", value)
-    end
+    define_method(attr) { instance_variable_get("@#{attr}") }
+    define_method("#{attr}=") { |value| instance_variable_set("@#{attr}", value) }
   end
 end
 
 article = Article.new
 article.title = "Ruby Metaprogramming"
 article.author = "John"
-puts "Article: #{article.title} by #{article.author}"
+puts "Example 5: #{article.title} by #{article.author}"
 
-# Example 6: Reopening existing class
+# Example 6: Reopen and extend core class
 String.class_eval do
   def shout
     upcase + "!"
   end
 end
 
-puts "hello".shout
+puts "Example 6: #{"hello".shout}"
 
-# Example 7: Conditional method definition
+# Example 7: Conditional definition
 class Feature
 end
 
 enable_feature = true
-
 Feature.class_eval do
-  if enable_feature
-    def enabled?
-      true
-    end
+  def enabled?
+    enable_feature
   end
 end
 
-f = Feature.new
-puts "Feature enabled?: #{f.enabled?}"
+puts "Example 7: #{Feature.new.enabled?}"
 
-# Example 8: Using class_eval with constants
+# Example 8: Add a constant
 class Config
 end
 
@@ -120,9 +112,9 @@ Config.class_eval do
   DEFAULT_TIMEOUT = 30
 end
 
-puts "Default timeout: #{Config::DEFAULT_TIMEOUT}"
+puts "Example 8: #{Config::DEFAULT_TIMEOUT}"
 
-# Example 9: Overriding existing method
+# Example 9: Override an existing method
 class Person
   def name
     "Unknown"
@@ -135,14 +127,13 @@ Person.class_eval do
   end
 end
 
-person = Person.new
-puts "Overridden name: #{person.name}"
+puts "Example 9: #{Person.new.name}"
 
-# Example 10: Adding validations dynamically (Rails-like pattern)
+# Example 10: Generate validations dynamically
 class Model
 end
 
-fields = [:email, :password]
+fields = %i[email password]
 
 fields.each do |field|
   Model.class_eval do
@@ -153,9 +144,9 @@ fields.each do |field|
   end
 end
 
-m = Model.new
-m.instance_variable_set("@email", "test@example.com")
-m.instance_variable_set("@password", "secret")
-m.validate_email
-m.validate_password
-puts "Validations passed"
+model = Model.new
+model.instance_variable_set("@email", "test@example.com")
+model.instance_variable_set("@password", "secret")
+model.validate_email
+model.validate_password
+puts "Example 10: validations passed"

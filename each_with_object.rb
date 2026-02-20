@@ -1,120 +1,57 @@
 # frozen_string_literal: true
-
-# =========================
-# BASIC USAGE
-# =========================
-
-# Example 1: Building array
+#
+# Topic: `each_with_object`
+# Purpose: Build an accumulator without returning it from the block.
+#
+# Example 1: Build an array
 numbers = [1, 2, 3, 4]
-result = numbers.each_with_object([]) do |n, arr|
-  arr << n * 2
-end
-puts "Doubled: #{result.inspect}" # [2, 4, 6, 8]
+doubled = numbers.each_with_object([]) { |n, acc| acc << n * 2 }
+puts "Example 1: #{doubled.inspect}"
 
-# Example 2: Building hash
+# Example 2: Build a hash
 words = %w[apple banana cherry]
-lengths = words.each_with_object({}) do |word, hash|
-  hash[word] = word.length
-end
-puts "Word lengths: #{lengths.inspect}"
+lengths = words.each_with_object({}) { |word, acc| acc[word] = word.length }
+puts "Example 2: #{lengths.inspect}"
 
-# Example 3: Grouping values
+# Example 3: Group values
 numbers = [1, 2, 3, 4, 5, 6]
 grouped = numbers.each_with_object({ even: [], odd: [] }) do |n, acc|
-  if n.even?
-    acc[:even] << n
-  else
-    acc[:odd] << n
-  end
+  (n.even? ? acc[:even] : acc[:odd]) << n
 end
-puts "Grouped: #{grouped.inspect}"
+puts "Example 3: #{grouped.inspect}"
 
-# =========================
-# DIFFERENCE VS inject/reduce
-# =========================
-
-# Example 4: inject version (for comparison)
+# Example 4: Comparison with `inject`
 numbers = [1, 2, 3]
-inject_result = numbers.inject([]) do |acc, n|
-  acc << n * 10
-end
-puts "Inject result: #{inject_result.inspect}"
+inject_result = numbers.inject([]) { |acc, n| acc << n * 10 }
+with_object_result = numbers.each_with_object([]) { |n, acc| acc << n * 10 }
+puts "Example 4: inject=#{inject_result.inspect}, each_with_object=#{with_object_result.inspect}"
 
-# Example 5: each_with_object version (no need to return accumulator)
-ewo_result = numbers.each_with_object([]) do |n, acc|
-  acc << n * 10
-end
-puts "each_with_object result: #{ewo_result.inspect}"
-
-# =========================
-# WITH STRINGS
-# =========================
-
-# Example 6: Concatenating string
+# Example 5: Build a string
 letters = %w[a b c]
-combined = letters.each_with_object("") do |char, str|
-  str << char.upcase
-end
-puts "Combined string: #{combined}" # "ABC"
+combined = letters.each_with_object("") { |char, acc| acc << char.upcase }
+puts "Example 5: #{combined}"
 
-# =========================
-# NESTED STRUCTURES
-# =========================
+# Example 6: Index by attribute
+users = [{ id: 1, name: "John" }, { id: 2, name: "Jane" }]
+indexed = users.each_with_object({}) { |user, acc| acc[user[:id]] = user }
+puts "Example 6: #{indexed.inspect}"
 
-# Example 7: Indexing objects by attribute
-users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" }
-]
-
-indexed = users.each_with_object({}) do |user, hash|
-  hash[user[:id]] = user
-end
-puts "Indexed users: #{indexed.inspect}"
-
-# Example 8: Counting occurrences
+# Example 7: Count occurrences
 items = %w[apple banana apple cherry apple]
-counts = items.each_with_object(Hash.new(0)) do |item, hash|
-  hash[item] += 1
-end
-puts "Counts: #{counts.inspect}"
+counts = items.each_with_object(Hash.new(0)) { |item, acc| acc[item] += 1 }
+puts "Example 7: #{counts.inspect}"
 
-# =========================
-# EDGE CASES
-# =========================
-
-# Example 9: Empty collection
+# Example 8: Empty collection
 empty = []
-result = empty.each_with_object([]) do |item, arr|
-  arr << item
-end
-puts "Empty result: #{result.inspect}" # []
+result = empty.each_with_object([]) { |item, acc| acc << item }
+puts "Example 8: #{result.inspect}"
 
-# Example 10: Immutable object mistake
-begin
-  numbers = [1, 2, 3]
-  result = numbers.each_with_object(0) do |n, acc|
-    acc += n # does not modify original accumulator
-  end
-  puts "Immutable accumulator: #{result}"
-rescue => e
-  puts "Error: #{e.class}"
-end
+# Example 9: Common mistake with immutable accumulator
+numbers = [1, 2, 3]
+result = numbers.each_with_object(0) { |n, acc| acc + n }
+puts "Example 9: #{result}"
 
-# =========================
-# CHAINING
-# =========================
-
-# Example 11: With select before each_with_object
+# Example 10: Chaining with select
 numbers = [1, 2, 3, 4, 5]
-result = numbers.select(&:odd?).each_with_object([]) do |n, arr|
-  arr << n * 100
-end
-puts "Chained result: #{result.inspect}"
-
-# Example 12: With sort
-words = %w[zebra apple banana]
-sorted_indexed = words.sort.each_with_object({}) do |word, hash|
-  hash[word] = word.upcase
-end
-puts "Sorted indexed: #{sorted_indexed.inspect}"
+chained = numbers.select(&:odd?).each_with_object([]) { |n, acc| acc << n * 100 }
+puts "Example 10: #{chained.inspect}"

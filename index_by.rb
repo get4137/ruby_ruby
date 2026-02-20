@@ -1,112 +1,44 @@
 # frozen_string_literal: true
-
-# =========================
-# BASIC USAGE
-# =========================
-
-# Example 1: Index array of hashes by key
+#
+# Topic: Indexing collections by a key
+# Purpose: Build a hash from an array keyed by a block.
+#
+# Example 1: Index by `id`
 users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
-  { id: 3, name: "Bob" }
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" }
 ]
+indexed = users.each_with_object({}) { |user, acc| acc[user[:id]] = user }
+puts "Example 1: #{indexed.inspect}"
 
-indexed = users.index_by { |u| u[:id] }
-puts "Indexed by id: #{indexed.inspect}"
-# => {1=>{...}, 2=>{...}, 3=>{...}}
+# Example 2: Index by computed key
+words = %w[alpha beta gamma]
+by_length = words.each_with_object({}) { |word, acc| acc[word.length] = word }
+puts "Example 2: #{by_length.inspect}"
 
-# Example 2: Index by name
-indexed = users.index_by { |u| u[:name] }
-puts "Indexed by name: #{indexed.inspect}"
+# Example 3: Duplicate keys overwrite earlier values
+items = %w[ant art arc]
+by_first_letter = items.each_with_object({}) { |word, acc| acc[word[0]] = word }
+puts "Example 3: #{by_first_letter.inspect}"
 
-# Example 3: Index simple array
-numbers = [10, 20, 30]
-indexed = numbers.index_by { |n| n / 10 }
-puts "Indexed numbers: #{indexed.inspect}"
-# => {1=>10, 2=>20, 3=>30}
-
-# Example 4: Duplicate keys (last wins)
-data = ["apple", "banana", "apricot"]
-indexed = data.index_by { |word| word[0] }
-puts "Duplicate key result: #{indexed.inspect}"
-# ключ "a" буде містити "apricot"
-
-
-# =========================
-# WITH OBJECTS
-# =========================
-
+# Example 4: Index by a method
 class User
-  attr_reader :id, :email
+  attr_reader :email
 
-  def initialize(id, email)
-    @id = id
+  def initialize(email)
     @email = email
   end
 end
 
-# Example 5: Index objects by attribute
-users = [
-  User.new(1, "a@mail.com"),
-  User.new(2, "b@mail.com")
-]
+users = [User.new("a@example.com"), User.new("b@example.com")]
+by_email = users.each_with_object({}) { |user, acc| acc[user.email] = user }
+puts "Example 4: #{by_email.keys.inspect}"
 
-indexed = users.index_by(&:id)
-puts "Indexed objects: #{indexed.inspect}"
-
-# Example 6: Accessing indexed value
-user = indexed[1]
-puts "User with id 1: #{user.email}"
-
-
-# =========================
-# CHAINING
-# =========================
-
-# Example 7: select + index_by
-users = [
-  { id: 1, active: true },
-  { id: 2, active: false },
-  { id: 3, active: true }
-]
-
-active_indexed = users
-                   .select { |u| u[:active] }
-                   .index_by { |u| u[:id] }
-
-puts "Active indexed: #{active_indexed.inspect}"
-
-# Example 8: sort + index_by
-words = %w[zebra apple banana]
-sorted_indexed = words.sort.index_by { |w| w.length }
-puts "Sorted indexed: #{sorted_indexed.inspect}"
-
-
-# =========================
-# PURE RUBY ALTERNATIVE
-# =========================
-
-# Example 9: Using each_with_object
-users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" }
-]
-
-indexed = users.each_with_object({}) do |user, hash|
-  hash[user[:id]] = user
+# Example 5: Rails-like `index_by` helper (simple implementation)
+module Enumerable
+  def index_by
+    each_with_object({}) { |item, acc| acc[yield(item)] = item }
+  end
 end
 
-puts "each_with_object alternative: #{indexed.inspect}"
-
-# Example 10: Using to_h
-indexed = users.map { |u| [u[:id], u] }.to_h
-puts "to_h alternative: #{indexed.inspect}"
-
-# Example 11: Behavior with empty collection
-empty = []
-puts "Empty index_by: #{empty.index_by { |x| x }.inspect}"
-
-# Example 12: index_by with computed key
-files = ["report.pdf", "image.png", "notes.txt"]
-indexed = files.index_by { |f| File.extname(f) }
-puts "Indexed by extension: #{indexed.inspect}"
+puts "Example 5: #{words.index_by(&:length).inspect}"

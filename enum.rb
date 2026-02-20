@@ -1,53 +1,31 @@
 # frozen_string_literal: true
-
-# =========================
-# ENUMERABLE BASICS
-# =========================
-
-# Example 1: each
+#
+# Topic: Enumerable basics
+# Purpose: Show common Enumerable methods and custom enumerables.
+#
+# Example 1: `each`
 numbers = [1, 2, 3]
-numbers.each do |n|
-  puts "Each: #{n}"
-end
+numbers.each { |n| puts "Example 1: #{n}" }
 
-# Example 2: map
+# Example 2: `map`
 squared = numbers.map { |n| n * n }
-puts "Map (squared): #{squared.inspect}"
+puts "Example 2: #{squared.inspect}"
 
-# Example 3: select
-evens = numbers.select(&:even?)
-puts "Select (even): #{evens.inspect}"
+# Example 3: `select` and `reject`
+puts "Example 3: select=#{numbers.select(&:even?).inspect}, reject=#{numbers.reject(&:even?).inspect}"
 
-# Example 4: reject
-odds = numbers.reject(&:even?)
-puts "Reject (odd): #{odds.inspect}"
-
-# Example 5: reduce
+# Example 4: `reduce`
 sum = numbers.reduce(0) { |acc, n| acc + n }
-puts "Reduce (sum): #{sum}"
+puts "Example 4: #{sum}"
 
-# Example 6: find
+# Example 5: `find`
 found = numbers.find { |n| n > 1 }
-puts "Find > 1: #{found}"
+puts "Example 5: #{found}"
 
-# Example 7: any?
-puts "Any even?: #{numbers.any?(&:even?)}"
+# Example 6: `any?` / `all?` / `none?`
+puts "Example 6: any_even=#{numbers.any?(&:even?)}, all_positive=#{numbers.all? { |n| n > 0 }}, none_negative=#{numbers.none? { |n| n < 0 }}"
 
-# Example 8: all?
-puts "All positive?: #{numbers.all? { |n| n > 0 }}"
-
-# Example 9: none?
-puts "None negative?: #{numbers.none? { |n| n < 0 }}"
-
-# Example 10: count
-puts "Count even: #{numbers.count(&:even?)}"
-
-
-# =========================
-# CREATING CUSTOM ENUMERABLE
-# =========================
-
-# Example 11: Custom class including Enumerable
+# Example 7: Custom class including Enumerable
 class Box
   include Enumerable
 
@@ -61,82 +39,34 @@ class Box
 end
 
 box = Box.new([10, 20, 30])
-puts "Custom Enumerable map: #{box.map { |x| x / 10 }.inspect}"
+puts "Example 7: #{box.map { |x| x / 10 }.inspect}"
 
+# Example 8: Enumerator object
+enum = numbers.to_enum
+puts "Example 8: #{enum.next}, #{enum.next}"
 
-# =========================
-# ENUMERATOR OBJECT
-# =========================
+# Example 9: Lazy enumerator
+lazy_result = (1..Float::INFINITY).lazy.select(&:even?).map { |x| x * 2 }.first(5)
+puts "Example 9: #{lazy_result.inspect}"
 
-# Example 12: to_enum / enum_for
-arr = [1, 2, 3]
-enum = arr.to_enum
-puts "Enumerator next: #{enum.next}"
-puts "Enumerator next: #{enum.next}"
-
-# Example 13: Lazy enumerator
-lazy_result = (1..Float::INFINITY).lazy
-                                  .select(&:even?)
-                                  .map { |x| x * 2 }
-                                  .first(5)
-puts "Lazy result: #{lazy_result.inspect}"
-
-
-# =========================
-# RAILS-LIKE ENUM SIMULATION
-# =========================
-
-# Example 14: Simple enum pattern (without Rails)
-class Order
-  STATUSES = {
-    pending: 0,
-    paid: 1,
-    shipped: 2
-  }.freeze
-
-  attr_reader :status
-
-  def initialize(status)
-    @status = status
-  end
-
-  def paid?
-    status == STATUSES[:paid]
-  end
-end
-
-order = Order.new(1)
-puts "Order paid?: #{order.paid?}"
-
-
-# =========================
-# ENUM WITH HASH ITERATION
-# =========================
-
-# Example 15: each on hash
+# Example 10: Hash iteration
 person = { name: "John", age: 30 }
-person.each do |key, value|
-  puts "Key: #{key}, Value: #{value}"
-end
+entries = []
+person.each { |key, value| entries << "#{key}=#{value}" }
+puts "Example 10: #{entries.join(", ")}" 
 
-# Example 16: transform_values
+# Example 11: `transform_values`
 doubled = { a: 1, b: 2 }.transform_values { |v| v * 2 }
-puts "Transform values: #{doubled.inspect}"
+puts "Example 11: #{doubled.inspect}"
 
-# Example 17: group_by
+# Example 12: `group_by`
 grouped = [1, 2, 3, 4, 5].group_by(&:even?)
-puts "Group by even: #{grouped.inspect}"
+puts "Example 12: #{grouped.inspect}"
 
-# Example 18: chunk
-chunks = [1, 1, 2, 2, 3, 3].chunk { |x| x }.to_a
-puts "Chunk: #{chunks.inspect}"
+# Example 13: `chunk`
+chunks = [1, 1, 2, 2, 3, 3].chunk(&:itself).to_a
+puts "Example 13: #{chunks.inspect}"
 
-# Example 19: cycle
-cycled = []
-[1, 2].cycle(2) { |x| cycled << x }
-puts "Cycle: #{cycled.inspect}"
-
-# Example 20: take and drop
+# Example 14: `take` and `drop`
 arr = [1, 2, 3, 4, 5]
-puts "Take 2: #{arr.take(2).inspect}"
-puts "Drop 2: #{arr.drop(2).inspect}"
+puts "Example 14: take=#{arr.take(2).inspect}, drop=#{arr.drop(2).inspect}"
