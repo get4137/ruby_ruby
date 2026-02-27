@@ -2,6 +2,7 @@
 #
 # Topic: `each_slice`
 # Purpose: Process elements in fixed-size batches.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic slicing
 numbers = [1, 2, 3, 4, 5, 6]

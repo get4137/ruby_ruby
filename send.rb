@@ -2,6 +2,7 @@
 #
 # Topic: `send` and `public_send`
 # Purpose: Call methods dynamically.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic send
 class Robot

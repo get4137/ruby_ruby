@@ -2,6 +2,7 @@
 #
 # Topic: `dig`
 # Purpose: Safely access nested data without raising errors.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Hash dig
 user = { profile: { name: "Alice" } }

@@ -2,6 +2,7 @@
 #
 # Topic: `zip`
 # Purpose: Combine arrays element-by-element.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic zip
 names = %w[Alice Bob]

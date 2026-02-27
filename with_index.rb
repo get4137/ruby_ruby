@@ -2,6 +2,7 @@
 #
 # Topic: `each_with_index` and `with_index`
 # Purpose: Iterate with an index and optional offset.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `each_with_index` (0-based)
 names = %w[Taras Tanya]

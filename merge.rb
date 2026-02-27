@@ -2,6 +2,7 @@
 #
 # Topic: `merge` and `merge!`
 # Purpose: Combine hashes and handle key conflicts.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic merge
 left = { a: 1, b: 2 }

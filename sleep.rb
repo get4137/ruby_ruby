@@ -2,6 +2,7 @@
 #
 # Topic: `sleep`
 # Purpose: Pause execution for a duration in seconds.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Sleep for a fraction of a second
 start = Time.now

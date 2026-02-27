@@ -2,6 +2,7 @@
 #
 # Topic: `tally`
 # Purpose: Count occurrences of items in an enumerable.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic tally on an array
 items = %w[apple banana apple cherry apple]

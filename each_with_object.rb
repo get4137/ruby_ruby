@@ -2,6 +2,7 @@
 #
 # Topic: `each_with_object`
 # Purpose: Build an accumulator without returning it from the block.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Build an array
 numbers = [1, 2, 3, 4]

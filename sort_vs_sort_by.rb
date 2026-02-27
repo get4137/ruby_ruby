@@ -2,6 +2,7 @@
 #
 # Topic: `sort` vs `sort_by`
 # Purpose: Compare custom comparator vs key-based sorting.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Default sort
 numbers = [3, 1, 2]

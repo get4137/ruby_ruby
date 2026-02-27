@@ -2,6 +2,7 @@
 #
 # Topic: `return`
 # Purpose: Exit early and return values from methods.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Early return
 

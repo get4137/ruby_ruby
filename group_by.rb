@@ -2,6 +2,7 @@
 #
 # Topic: `group_by`
 # Purpose: Group elements by a computed key.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Group numbers by parity
 numbers = [1, 2, 3, 4, 5]

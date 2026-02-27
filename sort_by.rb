@@ -2,6 +2,7 @@
 #
 # Topic: `sort_by`
 # Purpose: Sort by a computed key.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Sort numbers by absolute value
 numbers = [-2, 3, -1]

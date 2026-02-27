@@ -2,6 +2,7 @@
 #
 # Topic: `split`
 # Purpose: Break strings into arrays by a delimiter or pattern.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Split by comma
 csv_data = "item1,100\nitem2,200\nitem3,150"

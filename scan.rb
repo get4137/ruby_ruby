@@ -2,6 +2,7 @@
 #
 # Topic: `scan`
 # Purpose: Extract all regex matches from a string.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Scan digits
 text = "a1b2c3"

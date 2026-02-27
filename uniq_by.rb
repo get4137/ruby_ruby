@@ -2,6 +2,7 @@
 #
 # Topic: `uniq` with a block (uniq by key)
 # Purpose: Remove duplicates based on a computed key.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Uniq by first letter
 words = %w[ant art arc bear]

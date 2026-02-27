@@ -2,6 +2,7 @@
 #
 # Topic: `freeze`
 # Purpose: Prevent objects from being modified.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Freeze a string
 text = "ruby".freeze

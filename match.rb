@@ -2,6 +2,7 @@
 #
 # Topic: `match`
 # Purpose: Work with regex matches and capture groups.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic match
 text = "hello123"

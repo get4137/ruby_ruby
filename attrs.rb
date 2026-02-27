@@ -2,6 +2,7 @@
 #
 # Topic: Attribute helpers
 # Purpose: Show how `attr_reader`, `attr_writer`, and `attr_accessor` define getters/setters.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `attr_reader` creates read-only attributes
 class Airplane

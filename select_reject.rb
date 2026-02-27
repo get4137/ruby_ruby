@@ -2,6 +2,7 @@
 #
 # Topic: `select` and `reject`
 # Purpose: Filter collections based on a predicate.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Select from an array
 numbers = [1, 2, 3, 4, 5, 6]

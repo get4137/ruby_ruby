@@ -2,6 +2,7 @@
 #
 # Topic: `drop` and `drop_while`
 # Purpose: Remove leading items without mutating the receiver.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic drop
 items = [1, 2, 3, 4, 5]

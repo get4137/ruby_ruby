@@ -2,6 +2,7 @@
 #
 # Topic: `fetch`
 # Purpose: Read hash/array values with defaults or strict errors.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Hash fetch with a key
 hash = { a: 1 }

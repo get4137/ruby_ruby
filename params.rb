@@ -2,6 +2,7 @@
 #
 # Topic: Hash parameters
 # Purpose: Access and pass options in a clean, readable way.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Reading hash values
 options = { font_size: 12, font_family: "Arial" }

@@ -2,6 +2,7 @@
 #
 # Topic: Enumerable basics
 # Purpose: Show common Enumerable methods and custom enumerables.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `each`
 numbers = [1, 2, 3]

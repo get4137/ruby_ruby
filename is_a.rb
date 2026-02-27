@@ -2,6 +2,7 @@
 #
 # Topic: `is_a?`, `kind_of?`, and `instance_of?`
 # Purpose: Type checks and class hierarchy checks.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `is_a?` and `kind_of?` are the same
 value = "ruby"

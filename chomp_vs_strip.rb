@@ -2,6 +2,7 @@
 #
 # Topic: `chomp` vs `strip`
 # Purpose: Compare newline removal vs trimming surrounding whitespace.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `chomp` removes a trailing newline
 text = "hello\n"

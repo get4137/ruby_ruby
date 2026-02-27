@@ -2,6 +2,7 @@
 #
 # Topic: `compact` and `compact!`
 # Purpose: Remove nil values from arrays (and hashes via `compact` in newer Ruby).
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic `compact`
 values = [1, nil, 2, nil, 3]

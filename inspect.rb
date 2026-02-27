@@ -2,6 +2,7 @@
 #
 # Topic: `inspect`
 # Purpose: Produce developer-friendly string representations.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `inspect` vs `to_s`
 text = "hello"

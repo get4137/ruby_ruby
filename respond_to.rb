@@ -2,6 +2,7 @@
 #
 # Topic: `respond_to?`
 # Purpose: Check if an object implements a method.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic usage
 text = "hello"

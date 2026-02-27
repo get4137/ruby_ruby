@@ -2,6 +2,7 @@
 #
 # Topic: `self`
 # Purpose: Show how `self` changes by scope.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `self` in class context
 class Person

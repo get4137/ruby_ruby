@@ -2,6 +2,7 @@
 #
 # Topic: Block, Proc, and Lambda
 # Purpose: Show arity rules and return behavior differences.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: A block passed to a method
 [1, 2, 3].each { |n| puts "Example 1: #{n}" }

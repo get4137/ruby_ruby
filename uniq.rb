@@ -2,6 +2,7 @@
 #
 # Topic: `uniq` and `uniq!`
 # Purpose: Remove duplicate values from arrays.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic uniq
 values = [1, 1, 2, 2, 3]

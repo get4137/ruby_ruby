@@ -2,6 +2,7 @@
 #
 # Topic: `class_eval`
 # Purpose: Add or override methods/constants dynamically inside a class.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Add an instance method with a block
 class User

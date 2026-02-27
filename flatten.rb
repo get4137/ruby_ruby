@@ -2,6 +2,7 @@
 #
 # Topic: `flatten` and `flatten!`
 # Purpose: Convert nested arrays into a single-level array.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic flatten
 nested = [1, [2, 3], [4, [5]]]

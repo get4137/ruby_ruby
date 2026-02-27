@@ -2,6 +2,7 @@
 #
 # Topic: `concat` for String and Array
 # Purpose: Show mutation vs non-mutation and common patterns.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: String concat mutates the receiver
 text = "Hello"

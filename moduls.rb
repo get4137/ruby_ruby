@@ -2,6 +2,7 @@
 #
 # Topic: Modules
 # Purpose: Namespacing, mixins, and module functions.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Module as a namespace
 module Humans

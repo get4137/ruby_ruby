@@ -2,6 +2,7 @@
 #
 # Topic: `even?`
 # Purpose: Check parity of integers.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic usage
 puts "Example 1: #{4.even?}"

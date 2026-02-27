@@ -2,6 +2,7 @@
 #
 # Topic: `transform_keys`
 # Purpose: Map hash keys to new values.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Symbolize keys
 hash = { "a" => 1, "b" => 2 }

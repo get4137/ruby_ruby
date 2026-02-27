@@ -2,6 +2,7 @@
 #
 # Topic: `reduce` / `inject`
 # Purpose: Accumulate values into a single result.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Sum with an initial value
 numbers = [1, 2, 3, 4]

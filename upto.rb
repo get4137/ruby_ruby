@@ -2,6 +2,7 @@
 #
 # Topic: `upto`
 # Purpose: Iterate from a starting integer up to a limit.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic `upto`
 0.upto(3) { |i| puts "Example 1: i=#{i}" }

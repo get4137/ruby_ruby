@@ -2,6 +2,7 @@
 #
 # Topic: `reverse` and `reverse!`
 # Purpose: Reverse strings, arrays, and enumerables.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Reverse a string
 puts "Example 1: #{"hello".reverse}"

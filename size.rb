@@ -2,6 +2,7 @@
 #
 # Topic: `size` / `length`
 # Purpose: Measure collection or string length.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: String size
 name = "Ruby"

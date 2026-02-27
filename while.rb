@@ -2,6 +2,7 @@
 #
 # Topic: `while` and `until`
 # Purpose: Loop while a condition is true (or until it becomes true).
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic while loop
 count = 0

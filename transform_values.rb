@@ -2,6 +2,7 @@
 #
 # Topic: `transform_values`
 # Purpose: Map hash values while keeping keys.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Double values
 hash = { a: 1, b: 2 }

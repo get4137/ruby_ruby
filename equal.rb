@@ -2,6 +2,7 @@
 #
 # Topic: Equality in Ruby
 # Purpose: Compare `==`, `eql?`, and `equal?`.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `==` compares values
 puts "Example 1: #{10 == 10}"

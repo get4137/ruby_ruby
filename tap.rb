@@ -2,6 +2,7 @@
 #
 # Topic: `tap`
 # Purpose: Inspect or modify an object in a chain without changing the return value.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Tap for debugging
 value = "ruby"

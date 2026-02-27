@@ -2,6 +2,7 @@
 #
 # Topic: `casecmp`
 # Purpose: Compare strings ignoring case.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Equal ignoring case
 puts "Example 1: #{"Ruby".casecmp("ruby").inspect}"

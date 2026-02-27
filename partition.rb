@@ -2,6 +2,7 @@
 #
 # Topic: `partition`
 # Purpose: Split a collection into matched and unmatched arrays.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Partition by parity
 numbers = [1, 2, 3, 4, 5]

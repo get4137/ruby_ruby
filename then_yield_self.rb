@@ -2,6 +2,7 @@
 #
 # Topic: `then` / `yield_self`
 # Purpose: Build readable pipelines.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Simple pipeline with `then`
 result = "  Ruby "

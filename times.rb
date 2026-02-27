@@ -2,6 +2,7 @@
 #
 # Topic: `times`
 # Purpose: Repeat a block a fixed number of times.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic times
 3.times { |i| puts "Example 1: i=#{i}" }

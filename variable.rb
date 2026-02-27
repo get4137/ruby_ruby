@@ -2,6 +2,7 @@
 #
 # Topic: Variables and scope
 # Purpose: Show local, instance, class, and global variables.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Local variable scope
 local_var = 1

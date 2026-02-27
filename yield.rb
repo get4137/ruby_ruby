@@ -2,6 +2,7 @@
 #
 # Topic: `yield`
 # Purpose: Execute a block passed to a method.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic yield
 

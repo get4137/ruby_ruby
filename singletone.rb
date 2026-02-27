@@ -2,6 +2,7 @@
 #
 # Topic: Singleton methods
 # Purpose: Add behavior to a single object instance.
+# Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Define a singleton method
 animal = Object.new
