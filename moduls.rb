@@ -5,6 +5,7 @@
 # Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Module as a namespace
+# output: Example 1: Hello from Manager
 module Humans
   class Manager
     def greet
@@ -17,6 +18,7 @@ manager = Humans::Manager.new
 puts "Example 1: #{manager.greet}"
 
 # Example 2: Module mixin for instance methods
+# output: Example 2: Driving
 module Drivable
   def drive
     "Driving"
@@ -30,6 +32,7 @@ end
 puts "Example 2: #{Car.new.drive}"
 
 # Example 3: Module for class methods using `extend`
+# output: Example 3: Order
 module Identifiable
   def type
     name
@@ -43,6 +46,7 @@ end
 puts "Example 3: #{Order.type}"
 
 # Example 4: Module functions
+# output: Example 4: 25
 module MathTools
   module_function
 
@@ -54,6 +58,7 @@ end
 puts "Example 4: #{MathTools.square(5)}"
 
 # Example 5: `prepend` to wrap methods
+# output: Example 5: [LOG] saved
 module Logging
   def save
     "[LOG] #{super}"

@@ -5,39 +5,47 @@
 # Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: Basic `compact`
+# output: Example 1: [1, 2, 3]
 values = [1, nil, 2, nil, 3]
 puts "Example 1: #{values.compact.inspect}"
 
 # Example 2: `compact` does not mutate
+# output: Example 2: [1, nil, 2]
 values = [1, nil, 2]
 values.compact
 puts "Example 2: #{values.inspect}"
 
 # Example 3: `compact!` mutates (returns nil if no changes)
+# output: Example 3: values=[1, 2], result=[1, 2]
 values = [1, nil, 2]
 result = values.compact!
 puts "Example 3: values=#{values.inspect}, result=#{result.inspect}"
 
 # Example 4: `compact!` returns nil when nothing changes
+# output: Example 4: values=[1, 2, 3], result=nil
 values = [1, 2, 3]
 result = values.compact!
 puts "Example 4: values=#{values.inspect}, result=#{result.inspect}"
 
 # Example 5: Compact on hash (Ruby 2.4+)
+# output: Example 5: {:a=>1, :c=>2}
 settings = { a: 1, b: nil, c: 2 }
 puts "Example 5: #{settings.compact.inspect}"
 
 # Example 6: Compact with enumeration
+# output: Example 6: ["a", "b", "c"]
 items = ["a", nil, "b", nil, "c"]
 cleaned = items.each_with_object([]) { |item, acc| acc << item unless item.nil? }
 puts "Example 6: #{cleaned.inspect}"
 
 # Example 7: Compact after mapping
+# output: Example 7: ["ALICE", "BOB"]
 names = ["Alice", nil, "Bob"]
 upcased = names.map { |name| name&.upcase }
 puts "Example 7: #{upcased.compact.inspect}"
 
 # Example 8: Compact in a pipeline
+# output: Example 8: [2, 4]
 values = [1, nil, 2, nil, 3, 4]
 result = values.compact.select(&:even?)
 puts "Example 8: #{result.inspect}"

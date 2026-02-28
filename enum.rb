@@ -5,28 +5,37 @@
 # Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `each`
+# output: Example 1: 1
+# output: Example 1: 2
+# output: Example 1: 3
 numbers = [1, 2, 3]
 numbers.each { |n| puts "Example 1: #{n}" }
 
 # Example 2: `map`
+# output: Example 2: [1, 4, 9]
 squared = numbers.map { |n| n * n }
 puts "Example 2: #{squared.inspect}"
 
 # Example 3: `select` and `reject`
+# output: Example 3: select=[2], reject=[1, 3]
 puts "Example 3: select=#{numbers.select(&:even?).inspect}, reject=#{numbers.reject(&:even?).inspect}"
 
 # Example 4: `reduce`
+# output: Example 4: 6
 sum = numbers.reduce(0) { |acc, n| acc + n }
 puts "Example 4: #{sum}"
 
 # Example 5: `find`
+# output: Example 5: 2
 found = numbers.find { |n| n > 1 }
 puts "Example 5: #{found}"
 
 # Example 6: `any?` / `all?` / `none?`
+# output: Example 6: any_even=true, all_positive=true, none_negative=true
 puts "Example 6: any_even=#{numbers.any?(&:even?)}, all_positive=#{numbers.all? { |n| n > 0 }}, none_negative=#{numbers.none? { |n| n < 0 }}"
 
 # Example 7: Custom class including Enumerable
+# output: Example 7: [1, 2, 3]
 class Box
   include Enumerable
 
@@ -43,31 +52,38 @@ box = Box.new([10, 20, 30])
 puts "Example 7: #{box.map { |x| x / 10 }.inspect}"
 
 # Example 8: Enumerator object
+# output: Example 8: 1, 2
 enum = numbers.to_enum
 puts "Example 8: #{enum.next}, #{enum.next}"
 
 # Example 9: Lazy enumerator
+# output: Example 9: [4, 8, 12, 16, 20]
 lazy_result = (1..Float::INFINITY).lazy.select(&:even?).map { |x| x * 2 }.first(5)
 puts "Example 9: #{lazy_result.inspect}"
 
 # Example 10: Hash iteration
+# output: Example 10: name=John, age=30
 person = { name: "John", age: 30 }
 entries = []
 person.each { |key, value| entries << "#{key}=#{value}" }
 puts "Example 10: #{entries.join(", ")}" 
 
 # Example 11: `transform_values`
+# output: Example 11: {:a=>2, :b=>4}
 doubled = { a: 1, b: 2 }.transform_values { |v| v * 2 }
 puts "Example 11: #{doubled.inspect}"
 
 # Example 12: `group_by`
+# output: Example 12: {false=>[1, 3, 5], true=>[2, 4]}
 grouped = [1, 2, 3, 4, 5].group_by(&:even?)
 puts "Example 12: #{grouped.inspect}"
 
 # Example 13: `chunk`
+# output: Example 13: [[1, [1, 1]], [2, [2, 2]], [3, [3, 3]]]
 chunks = [1, 1, 2, 2, 3, 3].chunk(&:itself).to_a
 puts "Example 13: #{chunks.inspect}"
 
 # Example 14: `take` and `drop`
+# output: Example 14: take=[1, 2], drop=[3, 4, 5]
 arr = [1, 2, 3, 4, 5]
 puts "Example 14: take=#{arr.take(2).inspect}, drop=#{arr.drop(2).inspect}"

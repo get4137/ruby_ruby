@@ -5,6 +5,7 @@
 # Environment: Ruby core (works in plain Ruby).
 #
 # Example 1: `attr_reader` creates read-only attributes
+# output: Example 1: model=Boeing-777, speed=780
 class Airplane
   attr_reader :model, :speed
 
@@ -23,6 +24,7 @@ plane.fly!
 puts "Example 1: model=#{plane.model}, speed=#{plane.speed}"
 
 # Example 2: `attr_writer` creates write-only attributes
+# output: Example 2: masked=sec***
 class ApiToken
   attr_writer :token
 
@@ -37,6 +39,7 @@ token.token = "secret-token-123"
 puts "Example 2: masked=#{token.masked}"
 
 # Example 3: `attr_accessor` creates read/write attributes
+# output: Example 3: name=Alice, age=31
 class UserProfile
   attr_accessor :name, :age
 
@@ -51,6 +54,7 @@ profile.age += 1
 puts "Example 3: name=#{profile.name}, age=#{profile.age}"
 
 # Example 4: Custom setter with validation
+# output: Example 4: celsius=21.5
 class Temperature
   attr_reader :celsius
 
@@ -65,6 +69,7 @@ temp.celsius = 21.5
 puts "Example 4: celsius=#{temp.celsius}"
 
 # Example 5: Why `self.` matters for setters
+# output: Example 5: count=3
 class Counter
   attr_accessor :count
 
@@ -82,6 +87,7 @@ counter = Counter.new
 puts "Example 5: count=#{counter.count}"
 
 # Example 6: Exposing a collection safely (reader + controlled mutation)
+# output: Example 6: Boryspil has 3 planes
 class Airport
   attr_reader :name, :planes
 
@@ -100,6 +106,7 @@ airport = Airport.new("Boryspil")
 puts "Example 6: #{airport.name} has #{airport.planes.size} planes"
 
 # Example 7: Initialize from a hash using writers
+# output: Example 7: point=(1, 2)
 class Point
   attr_accessor :x, :y
 
@@ -114,6 +121,7 @@ point = Point.new(x: 1, y: 2)
 puts "Example 7: point=(#{point.x}, #{point.y})"
 
 # Example 8: Override generated methods
+# output: Example 8: price_cents=1999
 class Product
   attr_reader :price_cents
 
